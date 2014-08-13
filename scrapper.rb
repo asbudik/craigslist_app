@@ -24,8 +24,8 @@ def get_todays_rows(rows)
   #   date from a row
   rows.each do |el|
     if (el.css(".date").text.match(/Aug 12/))
-      if (!el.content.match(/item|house|boots|rescue|RESCUE|Rescue/))
-        filter_links(el, /Dog|dog|puppies|Puppies|Puppy|puppy|Pup|pup/)
+      if (!el.content.match(/item|house|boots|Rescue/))
+        filter_links(el, /Dog|dog|DOG|PUP|Pup|pup/)
       end
     end
   end
