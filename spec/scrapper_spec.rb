@@ -14,7 +14,7 @@ describe "scrapper" do
       # rows.each do |row|
       #   puts row.content
       # end
-      expect(filter_links(rows[0].content, /Albino|dog|puppies/)).to be(true)
+      expect(filter_links(rows[0], /Albino|dog|puppies/)).to be(true)
     end
   end
 
@@ -27,7 +27,7 @@ describe "scrapper" do
           puts count += 1
         end
       end
-      expect(get_todays_rows(@doc, "Aug 12")).to eql(100)
+      expect(get_todays_rows(@doc)).to.eql(100)
     end
   end
 end

@@ -11,21 +11,23 @@ def filter_links(rows, regex)
   # keywords
 
   if rows.content.match(regex)
-    matches = rows
-    puts matches.text
+    puts rows.css("href")
+    puts rows.text
     puts "*" * 60
+    return true
   end
 end
 
-def get_todays_rows(doc, date_str)
+def get_todays_rows(rows)
   #  1.) open chrome console to look in inside p.row to see
   #  if there is some internal date related content
   #  2.) figure out the class that you'll need to select the
   #   date from a row
-
-  doc.each do |el|
-    if el.css(".date").text.match(/Aug 12/)
-      filter_links(el, /Dog|dog|puppies|Puppies|Puppy|puppy|Pup|pup/)
+  rows.each do |el|
+    if (el.css(".date").text.match(/Aug 12/))
+      if (!el.content.match(/item|house|boots|rescue|RESCUE|Rescue/))
+        filter_links(el, /Dog|dog|puppies|Puppies|Puppy|puppy|Pup|pup/)
+      end
     end
   end
 end
@@ -34,9 +36,8 @@ def get_page_results
   url = "today.html"
   @doc = Nokogiri::HTML(open(url))
   rows = @doc.css(".row")
-  date = @doc.css(".date").text
 
-  get_todays_rows(rows, date)
+  get_todays_rows(rows)
 end
 
 def search(date_str)
