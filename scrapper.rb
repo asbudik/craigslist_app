@@ -10,7 +10,7 @@ def filter_links(rows, regex)
   # that have "pup", "puppy", or "dog"
   # keywords
   if rows.content.match(regex) && rows.css(".p").text.match(/pic/)
-    puts rows.css("a")[0]["href"]
+    puts "http://sfbay.craigslist.org#{rows.css("a")[0]["href"]}"
     puts rows.text
     puts "*" * 60
     return true
