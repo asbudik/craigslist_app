@@ -32,7 +32,7 @@ def get_todays_rows(rows)
 end
 
 def get_page_results
-  url = "today.html"
+  url = "http://sfbay.craigslist.org/sfc/pet/"
   @doc = Nokogiri::HTML(open(url))
   rows = @doc.css(".row")
 
@@ -46,6 +46,6 @@ end
 # want to learn more about
 # Time in ruby??
 #   http://www.ruby-doc.org/stdlib-1.9.3/libdoc/date/rdoc/Date.html#strftime-method
-# today = Time.now.strftime("%b %d")
-today = "Aug 12"
-search(today)
+@today = Time.now.strftime("%b %d")
+# today = "Aug 12"
+search(@today)
