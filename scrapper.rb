@@ -23,9 +23,9 @@ def get_todays_rows(rows)
   #  2.) figure out the class that you'll need to select the
   #   date from a row
   rows.each do |el|
-    if (el.css(".date").text.match(/Aug 12/))
+    if (el.css(".date").text.match(@today))
       if (!el.content.match(/item|house|boots|Rescue/))
-        filter_links(el, /Dog|dog|DOG|PUP|Pup|pup/)
+        filter_links(el, /dog|pup/i)
       end
     end
   end
